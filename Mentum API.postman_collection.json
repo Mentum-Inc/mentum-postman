@@ -1,0 +1,497 @@
+{
+	"info": {
+		"_postman_id": "607177c4-9ba5-4290-9108-72c69fe92f13",
+		"name": "Mentum API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Account Opening",
+			"item": [
+				{
+					"name": "Create an investment account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "John",
+									"description": "The user's first given name.",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Doe",
+									"description": "The user's first family name.",
+									"type": "text"
+								},
+								{
+									"key": "id_type",
+									"value": "CE",
+									"description": "The type of ID in Colombia. Cédula Ciudadanía or Cédula de Extranjería.",
+									"type": "text"
+								},
+								{
+									"key": "id_number",
+									"value": "bk7me9m4t2490xarQn",
+									"description": "The ID number of the user.",
+									"type": "text"
+								},
+								{
+									"key": "id_date_of_issue",
+									"value": "2020-10-12",
+									"description": "The date of issue of the ID.",
+									"type": "text"
+								},
+								{
+									"key": "identity_verification_code",
+									"value": "G9CgSs3MVF1AZFlSgGCw",
+									"description": "The confirmation code received from the identity verification service when submitting this user's information.",
+									"type": "text"
+								},
+								{
+									"key": "date_of_birth",
+									"value": "1991-02-10",
+									"description": "The user's date of birth.",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "john_doe@example.com",
+									"description": "The user's email address.",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "3141413231",
+									"description": "The user's Colombian phone number, without country code.",
+									"type": "text"
+								},
+								{
+									"key": "accept_fund_conditions",
+									"value": "True",
+									"description": "Whether the user accepts the terms and conditions of the investment fund with A&V.",
+									"type": "text"
+								},
+								{
+									"key": "accept_data_conditions",
+									"value": "True",
+									"description": "Whether the user accepts the data policy and conditions of A&V.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mentum_url}}/v0/account/create",
+							"host": [
+								"{{mentum_url}}"
+							],
+							"path": [
+								"v0",
+								"account",
+								"create"
+							]
+						},
+						"description": "Use the following endpoint to register your user with an A&V investment account."
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoint to open an investment account for a user. Calling this endpoint creates a Mentum account and opens an investment account with A&V in Colombia. This information can be captured using our widget as well.\n\nRemember, the only pre-requisite to have completed identity verification with your identity provider for the information that you are submitting.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Funding",
+			"item": [
+				{
+					"name": "Fund Assignment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mentum_user_id",
+									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
+									"description": "The user's Mentum ID that was created during account opening.",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "1",
+									"description": "The amount of funds being deposited to the user's fund in COP.",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "COP",
+									"description": "The currency for the user's fund.",
+									"type": "text"
+								},
+								{
+									"key": "reference",
+									"value": "NLYjwM741XBQjrmba9RS",
+									"description": "A reference for the deposit.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mentum_url}}/v0/account/fund",
+							"host": [
+								"{{mentum_url}}"
+							],
+							"path": [
+								"v0",
+								"account",
+								"fund"
+							]
+						},
+						"description": "Initiate the assignment of funds from A&V's collect bank account to a user's fund. PSE transfers are sent to the same A&V bank sccount for all users, and funds are virtually assigned using this endpoint."
+					},
+					"response": []
+				},
+				{
+					"name": "Information for PSE",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mentum_user_id",
+									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
+									"description": "The user's Mentum ID that was created during account opening.",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "1",
+									"description": "The amount of funds being deposited to the user's fund in COP.",
+									"type": "text"
+								},
+								{
+									"key": "currency",
+									"value": "COP",
+									"description": "The currency for the user's fund.",
+									"type": "text"
+								},
+								{
+									"key": "reference",
+									"value": "NLYjwM741XBQjrmba9RS",
+									"description": "A reference for the deposit.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mentum_url}}/v0/funding/info",
+							"host": [
+								"{{mentum_url}}"
+							],
+							"path": [
+								"v0",
+								"funding",
+								"info"
+							]
+						},
+						"description": "Fetch the destination account info for initiating a PSE transfer. The information from this endpoint can be used to initiate a PSE if the wallet has a bank account, or display the PSE instructions to the user if the wallet does not have a bank account."
+					},
+					"response": []
+				}
+			],
+			"description": "Use the endpoints below to facilitate the funding of a user investment account.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Monitoring",
+			"item": [
+				{
+					"name": "Account Info",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mentum_user_id",
+									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
+									"description": "The user's Mentum ID that was created during account opening.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mentum_url}}/v0/account/info",
+							"host": [
+								"{{mentum_url}}"
+							],
+							"path": [
+								"v0",
+								"account",
+								"info"
+							]
+						},
+						"description": "Get an overview about a user's investment account."
+					},
+					"response": []
+				},
+				{
+					"name": "Account Performance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mentum_user_id",
+									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
+									"description": "The user's Mentum ID that was created during account opening.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mentum_url}}/v0/account/performance",
+							"host": [
+								"{{mentum_url}}"
+							],
+							"path": [
+								"v0",
+								"account",
+								"performance"
+							]
+						},
+						"description": "Get up-to-date performance and aggregated data on a user's investment account. Mentum fetches and aggregates the information on a previous day (EOD) basis for the growth in equity value in the fund."
+					},
+					"response": []
+				},
+				{
+					"name": "Account Transactions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mentum_user_id",
+									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
+									"description": "The user's Mentum ID that was created during account opening.",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "2022-01-01",
+									"description": "The start date of the transactions query, inclusive.",
+									"type": "text"
+								},
+								{
+									"key": "end_date",
+									"value": "2022-02-01",
+									"description": "The end date of the transaction query, inclusive.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mentum_url}}/v0/account/transactions",
+							"host": [
+								"{{mentum_url}}"
+							],
+							"path": [
+								"v0",
+								"account",
+								"transactions"
+							]
+						},
+						"description": "Get a historical overview of a user's deposit/withdrawal transactions over the specified period, up to the last 6 months."
+					},
+					"response": []
+				}
+			],
+			"description": "Use the endpoints below to request information about a user's account, such as balance and historical performance.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Withdrawals",
+			"item": [
+				{
+					"name": "Withdrawal",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "mentum_user_id",
+									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
+									"description": "The user's Mentum ID that was created during account opening.",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "1",
+									"description": "The amount of funds being deposited to the user's fund in COP.",
+									"type": "text"
+								},
+								{
+									"key": "reference",
+									"value": "NLYjwM741XBQjrmba9RS",
+									"description": "A reference for the deposit.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mentum_url}}/v0/account/withdraw",
+							"host": [
+								"{{mentum_url}}"
+							],
+							"path": [
+								"v0",
+								"account",
+								"withdraw"
+							]
+						},
+						"description": "Initiate the withdrawal of funds from the user's fund to the pocket of the wallet within A&V. At this stage the wallet may enable to funds received in the wallet's pocket for the user in the wallet's bank account."
+					},
+					"response": []
+				}
+			],
+			"description": "Use the endpoint below to initiate withdrawal from the user's fund.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "secret",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "key_id",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
