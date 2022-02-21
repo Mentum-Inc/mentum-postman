@@ -192,7 +192,8 @@
 							"query": [
 								{
 									"key": "mentum_user_id",
-									"value": "70164738-5e9e-465c-afea-58f38c0bffbe"
+									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
+									"description": "The user's Mentum ID that was created during account opening."
 								}
 							]
 						},
