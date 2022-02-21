@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "607177c4-9ba5-4290-9108-72c69fe92f13",
+		"_postman_id": "6bf24268-d2db-4fff-a025-a5927ff4c6d6",
 		"name": "Mentum API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -176,43 +176,11 @@
 				},
 				{
 					"name": "Information for PSE",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "mentum_user_id",
-									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
-									"description": "The user's Mentum ID that was created during account opening.",
-									"type": "text"
-								},
-								{
-									"key": "amount",
-									"value": "1",
-									"description": "The amount of funds being deposited to the user's fund in COP.",
-									"type": "text"
-								},
-								{
-									"key": "currency",
-									"value": "COP",
-									"description": "The currency for the user's fund.",
-									"type": "text"
-								},
-								{
-									"key": "reference",
-									"value": "NLYjwM741XBQjrmba9RS",
-									"description": "A reference for the deposit.",
-									"type": "text"
-								}
-							]
-						},
 						"url": {
-							"raw": "{{mentum_url}}/v0/funding/info",
+							"raw": "{{mentum_url}}/v0/funding/info?mentum_user_id=70164738-5e9e-465c-afea-58f38c0bffbe",
 							"host": [
 								"{{mentum_url}}"
 							],
@@ -220,6 +188,12 @@
 								"v0",
 								"funding",
 								"info"
+							],
+							"query": [
+								{
+									"key": "mentum_user_id",
+									"value": "70164738-5e9e-465c-afea-58f38c0bffbe"
+								}
 							]
 						},
 						"description": "Fetch the destination account info for initiating a PSE transfer. The information from this endpoint can be used to initiate a PSE if the wallet has a bank account, or display the PSE instructions to the user if the wallet does not have a bank account."
@@ -262,17 +236,10 @@
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "mentum_user_id",
-									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
-									"description": "The user's Mentum ID that was created during account opening.",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
-							"raw": "{{mentum_url}}/v0/account/info",
+							"raw": "{{mentum_url}}/v0/account/info?mentum_user_id=70164738-5e9e-465c-afea-58f38c0bffbe",
 							"host": [
 								"{{mentum_url}}"
 							],
@@ -280,6 +247,13 @@
 								"v0",
 								"account",
 								"info"
+							],
+							"query": [
+								{
+									"key": "mentum_user_id",
+									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
+									"description": "The user's Mentum ID that was created during account opening."
+								}
 							]
 						},
 						"description": "Get an overview about a user's investment account."
@@ -296,17 +270,10 @@
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "mentum_user_id",
-									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
-									"description": "The user's Mentum ID that was created during account opening.",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
-							"raw": "{{mentum_url}}/v0/account/performance",
+							"raw": "{{mentum_url}}/v0/account/performance?mentum_user_id=70164738-5e9e-465c-afea-58f38c0bffbe",
 							"host": [
 								"{{mentum_url}}"
 							],
@@ -314,6 +281,13 @@
 								"v0",
 								"account",
 								"performance"
+							],
+							"query": [
+								{
+									"key": "mentum_user_id",
+									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
+									"description": "The user's Mentum ID that was created during account opening."
+								}
 							]
 						},
 						"description": "Get up-to-date performance and aggregated data on a user's investment account. Mentum fetches and aggregates the information on a previous day (EOD) basis for the growth in equity value in the fund."
@@ -330,29 +304,10 @@
 						"header": [],
 						"body": {
 							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "mentum_user_id",
-									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
-									"description": "The user's Mentum ID that was created during account opening.",
-									"type": "text"
-								},
-								{
-									"key": "start_date",
-									"value": "2022-01-01",
-									"description": "The start date of the transactions query, inclusive.",
-									"type": "text"
-								},
-								{
-									"key": "end_date",
-									"value": "2022-02-01",
-									"description": "The end date of the transaction query, inclusive.",
-									"type": "text"
-								}
-							]
+							"formdata": []
 						},
 						"url": {
-							"raw": "{{mentum_url}}/v0/account/transactions",
+							"raw": "{{mentum_url}}/v0/account/transactions?mentum_user_id=70164738-5e9e-465c-afea-58f38c0bffbe&start_date=2022-01-01&end_date=2022-02-01",
 							"host": [
 								"{{mentum_url}}"
 							],
@@ -360,6 +315,23 @@
 								"v0",
 								"account",
 								"transactions"
+							],
+							"query": [
+								{
+									"key": "mentum_user_id",
+									"value": "70164738-5e9e-465c-afea-58f38c0bffbe",
+									"description": "The user's Mentum ID that was created during account opening."
+								},
+								{
+									"key": "start_date",
+									"value": "2022-01-01",
+									"description": "The start date of the transactions query, inclusive."
+								},
+								{
+									"key": "end_date",
+									"value": "2022-02-01",
+									"description": "The end date of the transaction query, inclusive."
+								}
 							]
 						},
 						"description": "Get a historical overview of a user's deposit/withdrawal transactions over the specified period, up to the last 6 months."
